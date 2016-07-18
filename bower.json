@@ -1,0 +1,27 @@
+{
+  "name": "angular-node-gulp",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "louiszhu.zgf@gmail.com"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angular",
+    "node",
+    "gulp"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "~1.5.7"
+  }
+}
