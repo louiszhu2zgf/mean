@@ -16,12 +16,19 @@ gulp.task('clean', function(){
           .pipe(clean());
 });
 
+// images compile
+gulp.task('images', function(){
+  return gulp.src(['source/images/**/*.jpg', 'source/images/**/*.png'])
+          .pipe(gulp.dest('build/images'))
+          .pipe(browserSync.stream());
+});
+
 // sass compile
-gulp.task('sass', function(){
-  return gulp.src('source/css/**/*.sass')
+gulp.task('sass', ['images'], function(){
+  return gulp.src('source/**/*.sass')
           .pipe(sass().on('error', sass.logError))
           // .pipe(md5(8))
-          .pipe(gulp.dest('build'))
+          .pipe(gulp.dest('build/css'))
           .pipe(browserSync.stream());
 });
 
@@ -60,14 +67,16 @@ gulp.task('browser_sync', ['insert_source'], function(){
       baseDir: './build',
       routes: {
         '/bower_components': 'bower_components',
-        '/build': 'build'
+        '/build': 'build',
+        '/images': 'build/images'
       }
     }
   });
 
+  gulp.watch('source/**/*.html', ['htmls']);
   gulp.watch('source/**/*.js', ['insert_source']);
   gulp.watch('source/**/*.sass', ['insert_source']);
-  gulp.watch('source/index.html').on('change', browserSync.reload);
+  gulp.watch('source/index.html', ['insert_source']).on('change', browserSync.reload);
 });
 
 // nodemon server
