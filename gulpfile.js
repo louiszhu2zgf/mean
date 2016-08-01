@@ -7,8 +7,9 @@ var gulp = require('gulp'),
     inject = require('gulp-inject'),
     jslint = require('gulp-jslint'),
     nodemon = require('gulp-nodemon'),
-    browserSync = require('browser-sync').create(),
-    mainBowerFiles = require('main-bower-files');
+    autoprefixer = require('gulp-autoprefixer'),
+    mainBowerFiles = require('main-bower-files'),
+    browserSync = require('browser-sync').create();
 
 // clean build catalog
 gulp.task('clean', function(){
@@ -27,6 +28,7 @@ gulp.task('images', function(){
 gulp.task('sass', ['images'], function(){
   return gulp.src('source/**/*.sass')
           .pipe(sass().on('error', sass.logError))
+          .pipe(autoprefixer())
           // .pipe(md5(8))
           .pipe(gulp.dest('build/css'))
           .pipe(browserSync.stream());
