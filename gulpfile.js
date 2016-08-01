@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     md5 = require('gulp-md5'),
     sass = require('gulp-sass'),
     clean = require('gulp-clean'),
+    babel = require('gulp-babel'),
     inject = require('gulp-inject'),
     jslint = require('gulp-jslint'),
     nodemon = require('gulp-nodemon'),
@@ -38,6 +39,9 @@ gulp.task('sass', ['images'], function(){
 gulp.task('scripts', function(){
   return gulp.src('source/**/*.js')
           .pipe(jslint())
+          .pipe(babel({
+            presets: ['es2015']
+          }))
           // .pipe(jslint.reporter('default', errorsOnly))
           // .pipe(jslint.reporter('stylish', options))
           // .pipe(md5(8))
