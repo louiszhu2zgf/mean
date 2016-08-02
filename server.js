@@ -10,6 +10,7 @@ var port = process.env.PORT || 8080;
 
 var User = require('./app/model/user');
 
+mongoose.Promise = global.Promise;
 mongoose.connect(db.url);
 
 var allowCrossDomain = function(req, res, next) {
