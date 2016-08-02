@@ -1,32 +1,12 @@
 <div class="container page-container">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-xs-4" ng-repeat="character in characters">
       <div class="category-member">
-        <img src="/images/game.png" class="category-cover" alt="">
-        <i class="vote-count">3</i>
-        <h3 class="category-name">louis</h3>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="category-member">
-        <img src="/images/game.png" class="category-cover" alt="">
-        <i class="vote-count">3</i>
-        <h3 class="category-name">louis</h3>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="category-member">
-        <img src="/images/game.png" class="category-cover" alt="">
-        <i class="vote-count">3</i>
-        <h3 class="category-name">louis</h3>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="category-member">
-        <img src="/images/game.png" class="category-cover" alt="">
-        <i class="vote-count">3</i>
-        <h3 class="category-name">louis</h3>
+        <img ng-src={{character.coverurl}} class="category-cover" alt="">
+        <i class="vote-count">{{character.votes}}</i>
+        <h3 class="category-name">{{character.name}}</h3>
       </div>
     </div>
   </div>
+  <loading-spinner loading="loading"></loading-spinner>
 </div>

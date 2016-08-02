@@ -1,0 +1,18 @@
+.loading-ctn
+  .loading-spinner
+    display: inline-block
+    vertical-align: middle
+    width: 6px
+    height: 6px
+    border-radius: 50%
+    background: #ccc
+    animation: loadingSpinner .8s infinite ease
+    &:nth-child(1)
+      animation-delay: -0.32s
+    &:nth-child(2)
+      animation-delay: -0.16s
+@keyframes loadingSpinner
+  0%, 100%
+    transform: translateY(0)
+  50%
+    transform: translateY(-5px)
