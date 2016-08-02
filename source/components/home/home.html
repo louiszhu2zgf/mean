@@ -4,6 +4,7 @@
       <div class="category-member">
         <img ng-src={{character.coverurl}} class="category-cover" alt="">
         <i class="vote-count">{{character.votes}}</i>
+        <i class="glyphicon add-favor" ng-class="{'glyphicon-heart': character.is_vote, 'glyphicon-heart-empty': !character.is_vote}"></i>
         <h3 class="category-name">{{character.name}}</h3>
       </div>
     </div>
