@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var app = express();
-var router = express.Router();
 
 var db = require('./config/db');
 
@@ -28,36 +27,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 app.use(express.static(__dirname + './build'));
 
-router.use(function(req, res, next) {
-    // do logging
-    console.log('Something is happening.');
-    next(); // make sure we go to the next routes and don't stop here
-});
-router.route('/users')
-  .get(function(req, res){
-    User.find(function(err, users){
-      if (err) {
-        res.send(err);
-      } else {
-        res.send(users);
-      }
-    });
-  })
-  .post(function(req, res){
-    var user = new User();
-    user.name = req.body.name;
-    user.coverurl = req.body.coverurl;
-    user.votes = req.body.votes;
-
-    user.save(function(err){
-      if (err) {
-        res.send(err);
-      }else{
-        res.json({status: 0, message: 'User create!'});
-      }
-    })
-  });
-app.use('/api', router);
+require('./app/routes')(app);
 
 app.listen(port);
 console.log('Magic happens on port ' + port);

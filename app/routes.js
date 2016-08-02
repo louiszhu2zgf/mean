@@ -1,7 +1,7 @@
 var User = require('./model/user');
 
-module.exports = function(router){
-  router.route('/users')
+module.exports = function(app){
+  app.route('/api/users')
     .get(function(req, res){
       User.find(function(err, users){
         if (err) {
