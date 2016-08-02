@@ -1,0 +1,35 @@
+<div class="container page-container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 form-horizontal">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="nameIpt">名字：</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="nameIpt" placeholder="sample: Louis Zhu" ng-model="userName">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">头像：</label>
+        <dl class="cover-upload col-sm-10">
+          <dt class="update-method">
+            <a href="javascript: void(0);" class="method-item text-center">选择本地文件</a>
+            <a href="javascript: void(0);" class="method-item text-center active">填写网络图片地址</a>
+          </dt>
+          <dd class="upload-ctn">
+            <div class="update-ctn-item">
+              <label class="btn btn-default btn-block" for="userCover">选择文件</label>
+              <input class="hidden" type="file" id="userCover">
+            </div>
+            <div class="update-ctn-item">
+              <input class="form-control" type="text" placeholder="请填写完整的图片地址" ng-model="userCoverUrl">
+            </div>
+          </dd>
+        </dl>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+          <button class="btn btn-primary btn-block" ng-click="addCharacter()">保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
