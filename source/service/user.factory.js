@@ -9,6 +9,9 @@ meanApp.factory('User', ['$http', function($http){
     },
     delete: function(id){
       return $http.delete(host +'/api/users', id);
+    },
+    update: function(data){
+      return $http.put(host +'/api/users', data);
     }
   };
 }]);

@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
   name: String,
   coverurl: String,
-  votes: String
+  votes: Number,
+  voters: Array
 });
 
 module.exports = mongoose.model('user', userSchema);
