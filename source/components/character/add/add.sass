@@ -1,3 +1,25 @@
+.add-character-panel
+  padding-top: 40px
+  margin-top: 50px
+  background: #fff
+  border-radius: 4px
+  .character-avater
+    position: absolute
+    overflow: hidden
+    top: -40px
+    left: 50%
+    margin-left: -40px
+    width: 80px
+    height: 80px
+    border-radius: 40px
+    text-align: center
+    line-height: 80px
+    background: #fff
+    font-size: 36px
+    color: #ccc
+    border: 1px solid #e4e4e4
+  .submit-result
+    display: none
 .update-method
   height: 40px
   line-height: 38px
@@ -26,3 +48,13 @@
     display: none
     &:nth-child(2)
       display: block
+.error-tip-shake
+  animation: shakeError .2s 2
+
+@keyframes shakeError
+  0%,50%,100%
+    transform: translate3d(0, 0, 0)
+  25%
+    transform: translate3d(5px, 0, 0)
+  75%
+    transform: translate3d(-5px, 0, 0)

@@ -1,15 +1,16 @@
 <div class="container page-container">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 form-horizontal">
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="nameIpt">名字：</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="nameIpt" placeholder="sample: Louis Zhu" ng-model="userName">
-        </div>
+    <div class="col-sm-8 col-sm-offset-2 add-character-panel clearfix">
+      <div class="character-avater">
+        <i class="glyphicon glyphicon-user"></i>
       </div>
-      <div class="form-group">
-        <label class="col-sm-2 control-label">头像：</label>
-        <dl class="cover-upload col-sm-10">
+      <div class="form-group" ng-class="{'has-error': invalidUsernameForm}">
+        <label class="control-label" for="nameIpt">名字：</label>
+        <input type="text" class="form-control" ng-class="{'error-tip-shake': invalidUsername}" id="nameIpt" placeholder="sample: Louis Zhu" ng-model="userName" ng-blur="checkUsername(userName)">
+      </div>
+      <div class="form-group" ng-class="{'has-error': invalidCoverUrlForm}">
+        <label class="control-label">头像：</label>
+        <dl class="cover-upload">
           <dt class="update-method">
             <a href="javascript: void(0);" class="method-item text-center">选择本地文件</a>
             <a href="javascript: void(0);" class="method-item text-center active">填写网络图片地址</a>
@@ -20,15 +21,19 @@
               <input class="hidden" type="file" id="userCover">
             </div>
             <div class="update-ctn-item">
-              <input class="form-control" type="text" placeholder="请填写完整的图片地址" ng-model="userCoverUrl">
+              <input type="text" class="form-control" ng-class="{'error-tip-shake': invalidCoverUrl}" placeholder="请填写完整的图片地址" ng-model="userCoverUrl" ng-blur="checkCoverUrl(userCoverUrl)">
             </div>
           </dd>
         </dl>
       </div>
       <div class="form-group">
-        <div class="col-sm-10 col-sm-offset-2">
-          <button class="btn btn-primary btn-block" ng-click="addCharacter()">保存</button>
-        </div>
+        <button class="btn btn-outline btn-block" ng-class="{disabled: isloading}" ng-disabled="isloading" ng-click="addCharacter()">保存</button>
+      </div>
+      <div class="form-group" ng-show="saveSuccess">
+        <p class="text-success text-center"><i class="glyphicon glyphicon-ok"></i>&nbsp;保存成功(1s后跳转到首页)</p>
+      </div>
+      <div class="form-group" ng-show="saveError">
+        <p class="text-danger text-center"><i class="glyphicon glyphicon-remove"></i>&nbsp;保存失败</p>
       </div>
     </div>
   </div>
