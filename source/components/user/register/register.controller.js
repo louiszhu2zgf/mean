@@ -1,4 +1,4 @@
-meanApp.controller('AddCharacter', ['$scope', 'User', '$timeout', '$location', function ($scope, User, $timeout, $location){
+meanApp.controller('RegisterCharacter', ['$scope', 'User', '$timeout', '$location', function ($scope, User, $timeout, $location){
   $scope.invalidUsername = false;
   $scope.invalidUsernameForm = false;
   $scope.invalidCoverUrl = false;

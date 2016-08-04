@@ -6,12 +6,12 @@ meanApp.config(function ($routeProvider){
         templateUrl: 'components/home/home.html',
         controller: 'HomeController'
       })
-      .when('/character/add', {
-        templateUrl: 'components/character/add/add.html',
-        controller: 'AddCharacter'
+      .when('/register', {
+        templateUrl: 'components/user/register/register.html',
+        controller: 'RegisterCharacter'
       })
       .when('/login', {
-        templateUrl: 'components/login/login.html',
+        templateUrl: 'components/user/login/login.html',
         controller: 'loginController'
       })
       .when('/404', {

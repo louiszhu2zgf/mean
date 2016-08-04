@@ -105,8 +105,8 @@ gulp.task('nodemon', function(){
         });
 });
 
-// default task
-gulp.task('default', ['clean'], function(){
+// dev task
+gulp.task('dev', ['clean'], function(){
   gulp.start('browser_sync');
   gulp.start('nodemon');
 });

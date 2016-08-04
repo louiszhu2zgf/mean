@@ -1,10 +1,18 @@
 <div class="container page-container">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 add-character-panel clearfix">
+    <div class="col-sm-6 col-sm-offset-3 add-character-panel clearfix">
       <avatar></avatar>
       <div class="form-group" ng-class="{'has-error': invalidUsernameForm}">
-        <label class="control-label" for="nameIpt">名字</label>
+        <label class="control-label" for="nameIpt">用户名</label>
         <input type="text" class="form-control" ng-class="{'error-tip-shake': invalidUsername}" id="nameIpt" placeholder="sample: Louis Zhu" ng-model="userName" ng-blur="checkUsername(userName)">
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="pwdIpt">密码</label>
+        <input type="password" class="form-control" id="pwdIpt">
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="rePwdIpt">确认密码</label>
+        <input type="password" class="form-control" id="rePwdIpt" >
       </div>
       <div class="form-group" ng-class="{'has-error': invalidCoverUrlForm}">
         <label class="control-label">头像</label>
