@@ -5,17 +5,18 @@ module.exports = function(app){
     .get(function(req, res){
       // 过滤自己
       var u = User.find({});
-      var start = (req.query.pageIndex - 1)*6;
+      var pageSize = parseInt(req.query.pageSize);
+      var start = (req.query.pageIndex - 1) * pageSize;
       u.skip(start);
-      u.limit(6);
+      u.limit(pageSize);
       // u.sort({'post_date','asc'}); //排序
       // 根据关键字查询后分页
       // u.where('title','XXX');
       u.exec(function(err, users){
         if (err) {
-          res.send(err);
+          res.json({status: 1, message: err});
         } else {
-          res.send(users);
+          res.json({status: 0, data: users});
         }
       });
     })
@@ -26,7 +27,7 @@ module.exports = function(app){
 
       user.save(function(err){
         if (err) {
-          res.send({status: 1, message: err});
+          res.json({status: 1, message: err});
         }else{
           res.json({status: 0, message: 'User create!'});
         }
@@ -42,7 +43,7 @@ module.exports = function(app){
           var votes = (user.votes += 1);
           user.save(function(err){
             if (err) {
-              res.send({status: 1, message: err});
+              res.json({status: 1, message: err});
             }else{
               res.json({status: 0, data: { votes: votes}, message: 'vote success!'});
             }
