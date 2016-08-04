@@ -10,6 +10,10 @@ meanApp.config(function ($routeProvider){
         templateUrl: 'components/character/add/add.html',
         controller: 'AddCharacter'
       })
+      .when('/login', {
+        templateUrl: 'components/login/login.html',
+        controller: 'loginController'
+      })
       .when('/404', {
         templateUrl: 'components/404/404.html',
         controller: 'NotfoundController'

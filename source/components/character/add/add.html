@@ -1,15 +1,13 @@
 <div class="container page-container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2 add-character-panel clearfix">
-      <div class="character-avater">
-        <i class="glyphicon glyphicon-user"></i>
-      </div>
+      <avatar></avatar>
       <div class="form-group" ng-class="{'has-error': invalidUsernameForm}">
-        <label class="control-label" for="nameIpt">名字：</label>
+        <label class="control-label" for="nameIpt">名字</label>
         <input type="text" class="form-control" ng-class="{'error-tip-shake': invalidUsername}" id="nameIpt" placeholder="sample: Louis Zhu" ng-model="userName" ng-blur="checkUsername(userName)">
       </div>
       <div class="form-group" ng-class="{'has-error': invalidCoverUrlForm}">
-        <label class="control-label">头像：</label>
+        <label class="control-label">头像</label>
         <dl class="cover-upload">
           <dt class="update-method">
             <a href="javascript: void(0);" class="method-item text-center">选择本地文件</a>

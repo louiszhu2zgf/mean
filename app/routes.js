@@ -20,7 +20,7 @@ module.exports = function(app){
 
       user.save(function(err){
         if (err) {
-          res.send(err);
+          res.send({status: 1, message: err});
         }else{
           res.json({status: 0, message: 'User create!'});
         }
@@ -36,7 +36,7 @@ module.exports = function(app){
           var votes = (user.votes += 1);
           user.save(function(err){
             if (err) {
-              res.send(err);
+              res.send({status: 1, message: err});
             }else{
               res.json({status: 0, data: { votes: votes}, message: 'vote success!'});
             }
