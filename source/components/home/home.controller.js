@@ -1,7 +1,9 @@
 meanApp.controller('HomeController', ['$scope', 'User', function ($scope, User){
   $scope.msg = "hello from home page";
   $scope.loading = true;
-  User.get()
+  $scope.pageIndex = 1; // loading 6 items once request
+
+  User.get($scope.pageIndex)
     .success(function(data){
       $scope.characters = data
       $scope.loading = false;

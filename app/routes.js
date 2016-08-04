@@ -3,7 +3,15 @@ var User = require('./model/user');
 module.exports = function(app){
   app.route('/api/users')
     .get(function(req, res){
-      User.find(function(err, users){
+      // 过滤自己
+      var u = User.find({});
+      var start = (req.query.pageIndex - 1)*6;
+      u.skip(start);
+      u.limit(6);
+      // u.sort({'post_date','asc'}); //排序
+      // 根据关键字查询后分页
+      // u.where('title','XXX');
+      u.exec(function(err, users){
         if (err) {
           res.send(err);
         } else {
@@ -15,8 +23,6 @@ module.exports = function(app){
       var user = new User();
       user.name = req.body.name;
       user.coverurl = req.body.coverurl;
-      user.votes = req.body.votes;
-      user.voters = [];
 
       user.save(function(err){
         if (err) {
@@ -29,7 +35,7 @@ module.exports = function(app){
     .put(function(req, res){
       // update user info
       var userId = req.body._id;
-      User.findById(userId, function(err, user){
+      User.findOne({_id: userId}, function(err, user){
         if (err) {
           res.send(err);
         }else{
@@ -42,6 +48,6 @@ module.exports = function(app){
             }
           });
         }
-      })
+      });
     });
 };

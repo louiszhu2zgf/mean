@@ -1,8 +1,8 @@
 meanApp.factory('User', ['$http', function($http){
   var host = 'http://localhost:8080';
   return {
-    get: function(){
-      return $http.get(host +'/api/users');
+    get: function(pageIndex){
+      return $http.get(host +'/api/users?pageIndex='+ pageIndex);
     },
     create: function(data){
       return $http.post(host +'/api/users', data);

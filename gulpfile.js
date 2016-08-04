@@ -26,8 +26,17 @@ gulp.task('images', function(){
 });
 
 // sass compile
-gulp.task('sass', ['images'], function(){
-  return gulp.src('source/**/*.sass')
+gulp.task('sass-component', ['images'], function(){
+  return gulp.src('source/components/**/*.sass')
+          .pipe(sass().on('error', sass.logError))
+          .pipe(autoprefixer())
+          // .pipe(md5(8))
+          .pipe(gulp.dest('build/components'))
+          .pipe(browserSync.stream());
+});
+
+gulp.task('sass', ['sass-component'], function(){
+  return gulp.src('source/css/*.sass')
           .pipe(sass().on('error', sass.logError))
           .pipe(autoprefixer())
           // .pipe(md5(8))
