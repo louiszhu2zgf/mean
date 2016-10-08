@@ -1,5 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var logger = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var app = express();
@@ -19,8 +20,8 @@ var allowCrossDomain = function(req, res, next) {
 };
 
 app.use(allowCrossDomain);
+app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override'));
 
